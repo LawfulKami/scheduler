@@ -8,10 +8,11 @@ const items = props.interviewers.map((interviewer) => {
   const { name, avatar, id } = interviewer
   return <InterviewerListItem 
   key={id}
+  value={id}
   name={name}
   avatar={avatar}
   selected= {props.value === interviewer.id}
-  setInterviewer={props.onChange}
+  onChange={props.onChange}
   />
 })
 

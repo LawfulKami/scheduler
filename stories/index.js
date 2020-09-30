@@ -12,6 +12,7 @@ import Show from "../src/components/Appointment/Show"
 import Confirm from "../src/components/Appointment/Confirm"
 import Status from "../src/components/Appointment/Status"
 import Error from "../src/components/Appointment/Error"
+import Form from "../src/components/Appointment/Form"
 
 import "index.scss";
 
@@ -145,3 +146,5 @@ storiesOf("Appointment", module)
 .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
 .add("Status", () => <Status message={"Deleting"} />)
 .add("Error", () => <Error message={"Could not delete appointment."} onClose={action("onClose")} />)
+.add("Edit", () => <Form name="Lydia Miller-Jones" interviewers={interviewers} interviewer={2} onSave={action("onSave")} onCancel={action("onCancel")} />)
+.add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
