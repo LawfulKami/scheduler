@@ -21,6 +21,7 @@ return <main className="appointment__card appointment__card--show">
       <img
         className="appointment__actions-button"
         src="images/trash.png"
+        alt="Delete"
         onClick={props.onDelete}
       />
     </section>
