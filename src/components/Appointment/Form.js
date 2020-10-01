@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button"
-import InterviewerList from "components/InterviewerList"
+import InterviewerList from "../InterviewerList"
 
 
 
@@ -16,7 +16,7 @@ export default function Form(props) {
 
   function cancel() {
     reset()
-    props.onCancel()
+    props.back()
   }
   
   console.log(`Message, ${interviewer}`)
