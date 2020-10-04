@@ -13,7 +13,7 @@ return <main className="appointment__card appointment__card--error">
     className="appointment__error-close"
     src="images/close.png"
     alt="Close"
-    onClick={props.onClose}
+    onClick={() => props.back()}
   />
 </main>
 }
