@@ -59,10 +59,6 @@ export function useApplicationData() {
     })
   }, [])
 
-  // useEffect(()=>{
-
-  // }, [state.appointments])
-
 
 
     return { state, setDay, bookInterview, deleteInterview }
