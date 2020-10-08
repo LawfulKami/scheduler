@@ -55,25 +55,16 @@ export function useApplicationData() {
 
     webSocket.onmessage = ((event) => {
       const message = JSON.parse(event.data)
-      
-      
       if (message.type === "SET_INTERVIEW") {
         setState(prev => {
           console.log("hello")
           const newInt = message.interview
           const newAppointment = { ...prev.appointments[message.id], interview : newInt}
           const newAppointments = { ...prev.appointments, [message.id] : newAppointment}
-          console.log(newAppointments)
           return ({...prev, appointments: newAppointments})
         })
       }
     })
-  
-
-
-
-
-
 
     Promise.all([
       axios.get("/api/days"),

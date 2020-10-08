@@ -51,7 +51,13 @@ describe("Application", () => {
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
     );
+
+    // This part cannot properly be tested in Jest due to my implementation of the remaining days feature
+    // It depends on the response from the server, it is covered in EtE testing with Cypress
+
     // expect(getByText(day, "no spots remaining")).toBeInTheDocument();
+
+    
   })
 
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
@@ -67,6 +73,10 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Confirm"));
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
     await waitForElement(() => getByAltText(appointment, "Add"));
+
+    // This part cannot properly be tested in Jest due to my implementation of the remaining days feature
+    // It depends on the response from the server, it is covered in EtE testing with Cypress
+
     // 9. Check that the DayListItem with the text "Monday" also has the text "no spots remaining".
   });
 
@@ -87,6 +97,10 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
+    // This part cannot properly be tested in Jest due to my implementation of the remaining days feature
+    // It depends on the response from the server, it is covered in EtE testing with Cypress
+
     // 9. Check that the DayListItem with the text "Monday" also has the text "no spots remaining".
   });
 
