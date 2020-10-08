@@ -56,13 +56,13 @@ export function useApplicationData() {
     webSocket.onmessage = ((event) => {
       const message = JSON.parse(event.data)
       if (message.type === "SET_INTERVIEW") {
-        setState(prev => {
-          console.log("hello")
+        axios.get("/api/days")
+        .then((res) => setState(prev => {
           const newInt = message.interview
           const newAppointment = { ...prev.appointments[message.id], interview : newInt}
           const newAppointments = { ...prev.appointments, [message.id] : newAppointment}
-          return ({...prev, appointments: newAppointments})
-        })
+          return ({...prev, appointments: newAppointments, days : res.data})
+        }))
       }
     })
 
