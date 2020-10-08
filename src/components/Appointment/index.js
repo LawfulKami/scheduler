@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "components/Appointment/styles.scss";
 import Header from "./Header";
 import Show from "./Show";
@@ -55,13 +55,17 @@ function edit() {
   transition("EDITING")
 }
 
+useEffect(() => {
+  transition(props.interview ? SHOW : EMPTY)
+}, [props.interview])
+
 
 
 return (
 <article className="appointment"  data-testid="appointment">
   <Header time={props.time} />
   {mode === EMPTY && <Empty onAdd={() => transition("CREATE")} />}
-  {mode === SHOW && (
+  {mode === SHOW && props.interview && (
   <Show
     id={props.id}
     student={props.interview.student}

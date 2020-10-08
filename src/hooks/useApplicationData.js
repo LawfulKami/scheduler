@@ -48,8 +48,33 @@ export function useApplicationData() {
     });
   } 
 
+  
+  useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL)
 
-  useEffect(() => { 
+
+    webSocket.onmessage = ((event) => {
+      const message = JSON.parse(event.data)
+      
+      
+      if (message.type === "SET_INTERVIEW") {
+        setState(prev => {
+          console.log("hello")
+          const newInt = message.interview
+          const newAppointment = { ...prev.appointments[message.id], interview : newInt}
+          const newAppointments = { ...prev.appointments, [message.id] : newAppointment}
+          console.log(newAppointments)
+          return ({...prev, appointments: newAppointments})
+        })
+      }
+    })
+  
+
+
+
+
+
+
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
@@ -57,7 +82,12 @@ export function useApplicationData() {
     ]).then((all) => {
       setState(prev => ({...prev, days : all[0].data, appointments : all[1].data, interviewers: all[2].data}))
     })
+        
   }, [])
+  
+
+
+
 
 
 
